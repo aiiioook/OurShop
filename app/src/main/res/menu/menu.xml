@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_search"
+        android:icon="@drawable/baseline_search_black_24dp"
+        android:title="@string/actionbar_menu1"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/nav_filter"
+        android:icon="@drawable/baseline_filter_list_black_24dp"
+        android:title="@string/actionbar_menu2"
+        app:showAsAction="ifRoom|always" />
+
+</menu>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AppNavShop</string>
+    <string name="nav_home">Домой</string>
+    <string name="nav_favorite">Желаемое</string>
+    <string name="nav_cart">Корзина</string>
+    <string name="nav_myprof">Профиль</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="actionbar_menu1">Search</string>
+    <string name="actionbar_menu2">Filter</string>
+
+    <string name="item1">Item1</string>
+    <string name="item2">Item2</string>
+    <string name="item3">Item3</string>
+    <string name="item4">Item4</string>
+</resources>
