@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item
-        android:id="@+id/nav_home"
-        android:icon="@drawable/baseline_home_black_24dp"
-        android:title="@string/nav_home" />
-    <item
-        android:id="@+id/nav_favorite"
-        android:icon="@drawable/baseline_favorite_black_24dp"
-        android:title="@string/nav_favorite" />
+        android:id="@+id/nav_discount"
+        android:icon="@drawable/percent_discount_black_24dp"
+        android:title="@string/nav_discounts" />
+
     <item
         android:id="@+id/nav_cart"
         android:icon="@drawable/baseline_shopping_cart_black_24dp"
         android:title="@string/nav_cart" />
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/baseline_home_black_24dp"
+        android:title="@string/nav_home"/>
+
+    <item
+        android:id="@+id/nav_favorite"
+        android:icon="@drawable/baseline_favorite_black_24dp"
+        android:title="@string/nav_favorite" />
+
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/baseline_account_circle_black_24dp"
         android:title="@string/nav_myprof" />
-    <item
-        android:id="@+id/nav_profile2"
-        android:icon="@drawable/baseline_account_circle_black_24dp"
-        android:title="@string/nav_myprof" />
+
 </menu>

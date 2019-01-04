@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private FavoriteFragment favoriteFragment;
     private CartFragment cartFragment;
     private ProfileFragment profileFragment;
-
+    private DiscountFragment discountFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +34,10 @@ public class MainActivity extends AppCompatActivity {
         mMainFrame = findViewById(R.id.main_frame);
         mMainNav = findViewById(R.id.main_nav);
 
+        discountFragment = new DiscountFragment();
+        cartFragment = new CartFragment();
         homeFragment = new HomeFragment();
         favoriteFragment = new FavoriteFragment();
-        cartFragment = new CartFragment();
         profileFragment = new ProfileFragment();
 
 
@@ -48,20 +49,23 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (menuItem.getItemId()){
 
-                    case R.id.nav_home:
-
-                        setFragment(homeFragment);
+                    case R.id.nav_discount:
+                        setFragment(discountFragment);
                         return true;
-                    case R.id.nav_favorite:
 
-                        setFragment(favoriteFragment);
-                        return true;
                     case R.id.nav_cart :
-
                         setFragment(cartFragment);
                         return true;
-                    case R.id.nav_profile:
 
+                    case R.id.nav_home:
+                        setFragment(homeFragment);
+                        return true;
+
+                    case R.id.nav_favorite:
+                        setFragment(favoriteFragment);
+                        return true;
+
+                    case R.id.nav_profile:
                         setFragment(profileFragment);
                         return true;
 
@@ -72,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-// Менюшка экшн бара
+
+    // Менюшка экшн бара
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.action_nav_menu_fragment1, menu);
@@ -98,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setFragment(Fragment fragment) {
-
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_frame, fragment);
         fragmentTransaction.commit();
