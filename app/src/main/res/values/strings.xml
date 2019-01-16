@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppNavShop</string>
+    <string name="app_name">All inclusive</string>
     <string name="nav_home">Домой</string>
     <string name="nav_favorite">Желаемое</string>
     <string name="nav_cart">Корзина</string>
@@ -15,4 +15,13 @@
     <string name="item3">Item3</string>
     <string name="item4">Item4</string>
     <string name="nav_discounts">Акции</string>
+
+    <string-array name="my_foods">
+        <item>Акция 1</item>
+        <item>Акция 2</item>
+        <item>Акция 3</item>
+        <item>Акция 4</item>
+        <item>Акция 5</item>
+
+    </string-array>
 </resources>
