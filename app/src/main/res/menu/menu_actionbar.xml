@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+   <group android:id="@+id/item_group"
+       android:visible="true" >
+       <item
+           android:id="@+id/search_food_bar"
+           android:icon="@drawable/baseline_search_white_24dp"
+           android:title="@string/actionbar_menu1"
+           app:actionViewClass="android.widget.SearchView"
+           app:showAsAction="always" />
+
+       <item
+           android:id="@+id/filter_item"
+           android:icon="@drawable/baseline_filter_list_black_24dp"
+           android:title="@string/actionbar_menu2"
+           app:showAsAction="always" />
+   </group>
+</menu>

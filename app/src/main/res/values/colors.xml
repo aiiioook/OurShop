@@ -6,4 +6,16 @@
     
     <color name="colorWhite">#ffffff</color>
     <color name="colorWhiteTransparent">#80ffffff</color>
+    <color name="address">#FF9404</color>
+    <color name="followers">#FFA936</color>
+    <color name="headings">#FFA936</color>
+    <color name="solidCircle">#AAFFFFFF</color>
+    <color name="circleBorder">#50FFFFFF</color>
+    <color name="gradEnd">#DDD8D4</color>
+    <color name="gradStart">#FFA936</color>
+    <color name="followersBg">#FFA936</color>
+    <color name="followingBg">#FFA936</color>
+    <color name="grey">#E5E5E5</color>
+
+    <color name="white">#FFFFFF</color>
 </resources>

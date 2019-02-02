@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">AppNavShop</string>
+    <string name="app_name">All inclusive</string>
     <string name="nav_home">Домой</string>
     <string name="nav_favorite">Желаемое</string>
     <string name="nav_cart">Корзина</string>
     <string name="nav_myprof">Профиль</string>
-
+    <string name="nav_discounts">Акции</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="actionbar_menu1">Search</string>
@@ -14,5 +14,22 @@
     <string name="item2">Item2</string>
     <string name="item3">Item3</string>
     <string name="item4">Item4</string>
-    <string name="nav_discounts">Акции</string>
+
+
+    <string-array name="my_foods">
+        <item>Акция 1</item>
+        <item>Акция 2</item>
+        <item>Акция 3</item>
+        <item>Акция 4</item>
+        <item>Акция 5</item>
+    </string-array>
+
+
+    <string-array name="favorites">
+        <item>Favorite 1</item>
+        <item>Favorite 2</item>
+        <item>Favorite 3</item>
+        <item>Favorite 4</item>
+        <item>Favorite 5</item>
+    </string-array>
 </resources>
