@@ -10,13 +10,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
     private BottomNavigationView mMainNav;
@@ -29,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
     private DiscountFragment discountFragment;
     private SearchView search_bar;
     private ListView search_food;
-    private ArrayAdapter<String> adapter;
+    public  SearchView searchView;
+    //    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
         favoriteFragment = new FavoriteFragment();
         profileFragment = new ProfileFragment();
 
-        search_food = findViewById(R.id.search_food);
-        search_bar = findViewById(R.id.search_food_bar);
+//        search_food = findViewById(R.id.search_food_bar);
+//        search_bar = findViewById(R.id.search_food_bar);
         // Менюшка навигейшн бара (внизу)
         mMainNav.setSelectedItemId(R.id.nav_home);
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -104,26 +103,28 @@ public class MainActivity extends AppCompatActivity {
 
 //Подключение поиска и списка
 
-        ArrayList<String> array_food = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.my_foods)));
-        adapter = new ArrayAdapter<String>(
-                MainActivity.this,
-                android.R.layout.simple_list_item_1,
-                array_food
-        );
-        search_food.setAdapter(adapter);
+//        ArrayList<String> array_food = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.my_foods)));
+//        adapter = new ArrayAdapter<String>(
+//                MainActivity.this,
+//                android.R.layout.simple_list_item_1,
+//                array_food
+//        );
+//        search_food.setAdapter(adapter);
+
 
     }
 
-    // Менюшка экшн бара
+    // Менюшка экшн бар
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 //        getMenuInflater().inflate(R.menu.menu_actionbar, menu);
 //        return true;
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu_actionbar, menu);
-        MenuItem menuItem = menu.findItem(R.id.search_food_bar);
-        SearchView searchView = (SearchView) menuItem.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            MenuInflater menuInflater = getMenuInflater();
+            menuInflater.inflate(R.menu.menu_actionbar, menu);
+            MenuItem menuItem = menu.findItem(R.id.search_food_bar);
+            searchView = (SearchView) menuItem.getActionView();
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -131,12 +132,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
+              discountFragment.adapter.getFilter().filter(newText);
                 return false;
             }
         });
         return super.onCreateOptionsMenu(menu);
     }
+
+
 
         @Override
     public boolean onOptionsItemSelected(MenuItem item) {

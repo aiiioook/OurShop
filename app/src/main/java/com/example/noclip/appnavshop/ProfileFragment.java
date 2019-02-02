@@ -25,7 +25,7 @@ public class ProfileFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.setGroupVisible(R.id.item_group,false);
 //        ((MainActivity)getActivity()).setActionBarTitle(profile_login + "'s account" );
-        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+//        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         super.onCreateOptionsMenu(menu, inflater);
     }

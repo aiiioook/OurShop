@@ -8,7 +8,7 @@
     <!-- TODO: Update blank fragment layout -->
     <ListView
         android:padding="20dp"
-        android:id="@+id/search_food"
+        android:id="@+id/search_food_in_dis_fragment"
         android:layout_weight="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
