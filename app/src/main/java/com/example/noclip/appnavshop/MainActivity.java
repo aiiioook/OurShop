@@ -1,6 +1,8 @@
 package com.example.noclip.appnavshop;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -10,6 +12,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
@@ -25,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
     private CartFragment cartFragment;
     private ProfileFragment profileFragment;
     private DiscountFragment discountFragment;
-    private SearchView search_bar;
-    private ListView search_food;
     public  SearchView searchView;
     //    private ArrayAdapter<String> adapter;
 
@@ -37,13 +39,9 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
         tx.replace(R.id.main_frame, new HomeFragment());
         tx.commit();
-
-//        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         // кнопку назад энейблит
-
         mMainFrame = findViewById(R.id.main_frame);
         mMainNav = findViewById(R.id.main_nav);
-
         discountFragment = new DiscountFragment();
         cartFragment = new CartFragment();
         homeFragment = new HomeFragment();
@@ -54,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 //        search_bar = findViewById(R.id.search_food_bar);
         // Менюшка навигейшн бара (внизу)
         mMainNav.setSelectedItemId(R.id.nav_home);
+        setFragment(homeFragment);
         mMainNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("WrongConstant")
             @Override
@@ -65,53 +64,44 @@ public class MainActivity extends AppCompatActivity {
                         setFragment(discountFragment);
                         setActionBarTitle("Акции и скидки");
                         showActionBar();
+                        hideWhenFragment();
                         return true;
 
                     case R.id.nav_cart :
                         setFragment(cartFragment);
                         setActionBarTitle("Ваша корзина");
                         showActionBar();
+                        hideWhenFragment();
                         return true;
 
                     case R.id.nav_home:
                         setFragment(homeFragment);
                         setActionBarTitle("All inclusive");
                         showActionBar();
+                        hideWhenFragment();
+
                         return true;
 
                     case R.id.nav_favorite:
                         setFragment(favoriteFragment);
                         setActionBarTitle("Список желаемого");
                         showActionBar();
+                        hideWhenFragment();
                         return true;
 
                     case R.id.nav_profile:
                         setFragment(profileFragment);
                         setActionBarTitle("Профиль [profile_name]");
                         showActionBar();
+                        hideWhenFragment();
                         return true;
 
                      default:
 
                          return false;
-
                 }
-
             }
         });
-
-
-//Подключение поиска и списка
-
-//        ArrayList<String> array_food = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.my_foods)));
-//        adapter = new ArrayAdapter<String>(
-//                MainActivity.this,
-//                android.R.layout.simple_list_item_1,
-//                array_food
-//        );
-//        search_food.setAdapter(adapter);
-
-
     }
 
     // Менюшка экшн бар
@@ -126,13 +116,23 @@ public class MainActivity extends AppCompatActivity {
             searchView = (SearchView) menuItem.getActionView();
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
+            public boolean onQueryTextSubmit(String query) {return false;}
 
             @Override
             public boolean onQueryTextChange(String newText) {
-              discountFragment.adapter.getFilter().filter(newText);
+//                if (homeFragment.isVisible())
+                    if(homeFragment.isStateSaved() || homeFragment.isVisible() || homeFragment.isResumed() ||
+                            homeFragment.isAdded()){
+                    homeFragment.adapter.getFilter().filter(newText);
+                }
+             if(cartFragment.isVisible())
+                    cartFragment.adapter.getFilter().filter(newText);
+             if (discountFragment.isVisible())
+                    discountFragment.adapter.getFilter().filter(newText);
+             if(favoriteFragment.isVisible())
+                    favoriteFragment.adapter.getFilter().filter(newText);
+
+
                 return false;
             }
         });
@@ -140,8 +140,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-        @Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_search:
@@ -158,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_frame, fragment);
@@ -173,5 +171,24 @@ public class MainActivity extends AppCompatActivity {
     public void showActionBar(){
         getSupportActionBar().show();
     }
+
+    public void hideWhenFragment(){
+        hideKeyboard();
+        searchView.clearFocus();
+        searchView.setQuery("", false);
+        searchView.setIconified(true);
+    }
+
+    public void hideKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null){
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(),0);
+        }
+    }
+    public void setSupportActionBar(boolean flag){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(flag);
+    }
+
 
 }

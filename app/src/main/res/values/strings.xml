@@ -32,4 +32,20 @@
         <item>Favorite 4</item>
         <item>Favorite 5</item>
     </string-array>
+
+    <string-array name="home_list">
+        <item>Товар 1</item>
+        <item>Товар 2</item>
+        <item>Товар 3</item>
+        <item>Товар 4</item>
+        <item>Товар 5</item>
+    </string-array>
+
+    <string-array name="cart_list">
+        <item>Заказ 1</item>
+        <item>Заказ 2</item>
+        <item>Заказ 3</item>
+        <item>Заказ 4</item>
+        <item>Заказ 5</item>
+    </string-array>
 </resources>
