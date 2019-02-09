@@ -2,21 +2,26 @@ package com.example.noclip.appnavshop.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import com.example.noclip.appnavshop.R;
+import com.example.noclip.appnavshop.adapter.PostAdapter;
+import com.example.noclip.appnavshop.model.Product;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 public class CartFragment extends Fragment {
-    private ListView listView;
+
     public ArrayAdapter<String> adapter;
+    private RecyclerView recyclerView;
 
     public CartFragment() {
         // Required empty public constructor
@@ -24,19 +29,28 @@ public class CartFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_cart, container, false);
+        View view = inflater.inflate(R.layout.fragment_cart, container, false);
 
-        listView = view.findViewById(R.id.cart_list);
+        //View
+        recyclerView = view.findViewById(R.id.recycler_posts);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        ArrayList<String> cartlist = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.cart_list)));
-        adapter = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1,
-                cartlist);
-        listView.setAdapter(adapter);
+
+        displayData(new ArrayList<Product>() {{
+            add(new Product(0L, "First"));
+            add(new Product(1L, "Second"));
+            add(new Product(2L, "Third"));
+            add(new Product(3L, "Fourth"));
+        }});
 
         return view;
     }
 
+    private void displayData(List<Product> placeWithCategories) {
+        PostAdapter adapter = new PostAdapter(getActivity(), placeWithCategories);
+        recyclerView.setAdapter(adapter);
+    }
 }

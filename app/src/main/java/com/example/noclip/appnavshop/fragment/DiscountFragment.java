@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import com.example.noclip.appnavshop.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
