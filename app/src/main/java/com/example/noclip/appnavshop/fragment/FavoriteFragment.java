@@ -1,31 +1,24 @@
-package com.example.noclip.appnavshop;
+package com.example.noclip.appnavshop.fragment;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SearchView;
+
+import com.example.noclip.appnavshop.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class FavoriteFragment extends Fragment {
     private ListView listView;
-    public  ArrayAdapter<String> adapter;
+    public ArrayAdapter<String> adapter;
 
 
     public FavoriteFragment() {

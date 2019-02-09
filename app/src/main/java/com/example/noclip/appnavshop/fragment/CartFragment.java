@@ -1,4 +1,4 @@
-package com.example.noclip.appnavshop;
+package com.example.noclip.appnavshop.fragment;
 
 
 import android.os.Bundle;
@@ -9,13 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.noclip.appnavshop.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class CartFragment extends Fragment {
     private ListView listView;
     public ArrayAdapter<String> adapter;
